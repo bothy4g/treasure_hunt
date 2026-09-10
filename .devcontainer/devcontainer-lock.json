@@ -1,0 +1,24 @@
+{
+  "features": {
+    "ghcr.io/devcontainer-config/features/dot-config:4": {
+      "version": "4.0.0",
+      "resolved": "ghcr.io/devcontainer-config/features/dot-config@sha256:d9ca770ccb218e619d5725fd50f00dfacdf582d92a8c3901f11b53b1caddd878",
+      "integrity": "sha256:d9ca770ccb218e619d5725fd50f00dfacdf582d92a8c3901f11b53b1caddd878"
+    },
+    "ghcr.io/devcontainers-extra/features/composer:1": {
+      "version": "1.0.1",
+      "resolved": "ghcr.io/devcontainers-extra/features/composer@sha256:92bd9a7d6b294cdf231e7c4c36897da20e09e65d580db516d768c8b309496a76",
+      "integrity": "sha256:92bd9a7d6b294cdf231e7c4c36897da20e09e65d580db516d768c8b309496a76"
+    },
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "1.1.5",
+      "resolved": "ghcr.io/devcontainers/features/php@sha256:28f032b4b6867f09d09a15dffcf82f225057c35a4e819680a9f836f0684b041b",
+      "integrity": "sha256:28f032b4b6867f09d09a15dffcf82f225057c35a4e819680a9f836f0684b041b"
+    },
+    "ghcr.io/shyim/devcontainers-features/php:0": {
+      "version": "0.1.5",
+      "resolved": "ghcr.io/shyim/devcontainers-features/php@sha256:74c3fd56f9d5516ef8037f4fea07a66a3435988134343eb0760f1c77653c402c",
+      "integrity": "sha256:74c3fd56f9d5516ef8037f4fea07a66a3435988134343eb0760f1c77653c402c"
+    }
+  }
+}

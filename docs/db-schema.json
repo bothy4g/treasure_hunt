@@ -1,0 +1,1176 @@
+{
+    "cache": {
+        "columns": [
+            {
+                "name": "key",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "value",
+                "type": "mediumtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "expiration",
+                "type": "bigint",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "cache_expiration_index",
+                "columns": [
+                    "expiration"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "key"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "cache_locks": {
+        "columns": [
+            {
+                "name": "key",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "owner",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "expiration",
+                "type": "bigint",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "cache_locks_expiration_index",
+                "columns": [
+                    "expiration"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "key"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "characters": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "user_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "description",
+                "type": "mediumtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "strength",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "willpower",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "perserverance",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "intelligence",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "dexterity",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "socialization",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "focus",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "balance",
+                "type": "tinyint unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "generated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "treasure_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "scripture_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "action_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "health_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "community_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "money",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "cultural_temptation_resistance",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "faith_temptation_resistance",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "social_temptation_resistance",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "economical_temptation_resistance",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "cultural_xp",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "faith_xp",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "social_xp",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "economical_xp",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "general_xp",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "user_id"
+                ],
+                "foreign_table": "users",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "characters_user_id_foreign",
+                "columns": [
+                    "user_id"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "failed_jobs": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "uuid",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "connection",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "queue",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "payload",
+                "type": "longtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "exception",
+                "type": "longtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "failed_at",
+                "type": "timestamp",
+                "nullable": false,
+                "default": "CURRENT_TIMESTAMP"
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "failed_jobs_connection_queue_failed_at_index",
+                "columns": [
+                    "connection",
+                    "queue",
+                    "failed_at"
+                ],
+                "unique": false
+            },
+            {
+                "name": "failed_jobs_uuid_unique",
+                "columns": [
+                    "uuid"
+                ],
+                "unique": true
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "job_batches": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "total_jobs",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "pending_jobs",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "failed_jobs",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "failed_job_ids",
+                "type": "longtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "options",
+                "type": "mediumtext",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "cancelled_at",
+                "type": "int",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "finished_at",
+                "type": "int",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "jobs": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "queue",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "payload",
+                "type": "longtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "attempts",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "reserved_at",
+                "type": "int unsigned",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "available_at",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "jobs_queue_index",
+                "columns": [
+                    "queue"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "levelings": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "character_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "leveled_up_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "to_level",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "health_points",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "faith_points",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "skill_points",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "community_points",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "character_id"
+                ],
+                "foreign_table": "characters",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "levelings_character_id_foreign",
+                "columns": [
+                    "character_id"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "migrations": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "migration",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "batch",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "passkeys": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "user_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "credential_id",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "credential",
+                "type": "json",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "last_used_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "user_id"
+                ],
+                "foreign_table": "users",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "passkeys_credential_id_unique",
+                "columns": [
+                    "credential_id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "passkeys_user_id_index",
+                "columns": [
+                    "user_id"
+                ],
+                "unique": false
+            },
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "password_reset_tokens": {
+        "columns": [
+            {
+                "name": "email",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "token",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "email"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "sessions": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "user_id",
+                "type": "bigint unsigned",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "ip_address",
+                "type": "varchar(45)",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "user_agent",
+                "type": "text",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "payload",
+                "type": "longtext",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "last_activity",
+                "type": "int",
+                "nullable": false,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "sessions_last_activity_index",
+                "columns": [
+                    "last_activity"
+                ],
+                "unique": false
+            },
+            {
+                "name": "sessions_user_id_index",
+                "columns": [
+                    "user_id"
+                ],
+                "unique": false
+            }
+        ]
+    },
+    "team_invitations": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "code",
+                "type": "varchar(64)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "team_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "email",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "role",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "invited_by",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "expires_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "accepted_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "invited_by"
+                ],
+                "foreign_table": "users",
+                "foreign_columns": [
+                    "id"
+                ]
+            },
+            {
+                "columns": [
+                    "team_id"
+                ],
+                "foreign_table": "teams",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "team_invitations_code_unique",
+                "columns": [
+                    "code"
+                ],
+                "unique": true
+            },
+            {
+                "name": "team_invitations_invited_by_foreign",
+                "columns": [
+                    "invited_by"
+                ],
+                "unique": false
+            },
+            {
+                "name": "team_invitations_team_id_foreign",
+                "columns": [
+                    "team_id"
+                ],
+                "unique": false
+            }
+        ]
+    },
+    "team_members": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "team_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "user_id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "role",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "team_id"
+                ],
+                "foreign_table": "teams",
+                "foreign_columns": [
+                    "id"
+                ]
+            },
+            {
+                "columns": [
+                    "user_id"
+                ],
+                "foreign_table": "users",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "team_members_team_id_user_id_unique",
+                "columns": [
+                    "team_id",
+                    "user_id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "team_members_user_id_foreign",
+                "columns": [
+                    "user_id"
+                ],
+                "unique": false
+            }
+        ]
+    },
+    "teams": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "slug",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "is_personal",
+                "type": "tinyint(1)",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "deleted_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "teams_slug_unique",
+                "columns": [
+                    "slug"
+                ],
+                "unique": true
+            }
+        ]
+    },
+    "users": {
+        "columns": [
+            {
+                "name": "id",
+                "type": "bigint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "name",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "email",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "email_verified_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "password",
+                "type": "varchar(255)",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "two_factor_secret",
+                "type": "text",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "two_factor_recovery_codes",
+                "type": "text",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "two_factor_confirmed_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "current_team_id",
+                "type": "bigint unsigned",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "remember_token",
+                "type": "varchar(100)",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "created_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp",
+                "nullable": true,
+                "default": null
+            }
+        ],
+        "foreign_keys": [
+            {
+                "columns": [
+                    "current_team_id"
+                ],
+                "foreign_table": "teams",
+                "foreign_columns": [
+                    "id"
+                ]
+            }
+        ],
+        "indexes": [
+            {
+                "name": "primary",
+                "columns": [
+                    "id"
+                ],
+                "unique": true
+            },
+            {
+                "name": "users_current_team_id_foreign",
+                "columns": [
+                    "current_team_id"
+                ],
+                "unique": false
+            },
+            {
+                "name": "users_email_unique",
+                "columns": [
+                    "email"
+                ],
+                "unique": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,151 @@
+# Treasure Hunt Views Structure - Mermaid Graph
+
+```mermaid
+graph TB
+    %% Main Layout Components
+    Layout_A[] --> Sidebar[Sidebar Layout]
+    Layout_A --> Header[Header Layout]
+    Layout_A --> MainContent[Main Content Area]
+
+    %% Sidebar Composition
+    Sidebar[
+        TeamSwitcher[Team Switcher Component]
+        PlatformNav[Platform Navigation]
+        FooterMenu[Footer Menu]
+    ]
+    Sidebar --> TeamSwitcher
+    Sidebar --> PlatformNav
+    Sidebar --> FooterMenu
+
+    %% Auth Layout Variants
+    AuthLayout[Authentication Layout]
+    AuthLayout --> Simple[Simple Auth Layout]
+    AuthLayout --> Card[Card Auth Layout]
+    AuthLayout --> Split[Split Auth Layout]
+
+    %% Page Components
+    Dashboard[Dashboard Page]
+    TeamsIndex[Teams Index Page]
+    TeamSwitcher[Team Switcher Component]
+    CreateTeamModal[Create Team Modal]
+    SettingsPage[Settings Page]
+    ProfilePage[Profile Page]
+
+    %% Component Hierarchy
+    Dashboard --> TeamsRow[Team Row Component]
+    TeamsIndex --> TeamsRow
+    TeamsIndex --> CreateTeamModal
+    TeamSwitcher --> TeamsRow
+    CreateTeamModal --> TeamsRow
+
+    %% Data Flow
+    AuthLayout --> AuthData[Auth Data Sources]
+    AuthData --> TeamsCollection[Teams Collection]
+    AuthData --> UserTeams[User Teams Query]
+
+    %% Slot System
+    MainContent --> Slot[Dynamic Slot]
+    Slot --> Dashboard
+    Slot --> TeamsIndex
+    Slot --> TeamSwitcher
+    Slot --> CreateTeamModal
+    Slot --> SettingsPage
+    Slot --> ProfilePage
+
+    %% Navigation Elements
+    Header --> NavItem[Navigation Items]
+    NavItem --> Dashboard
+    NavItem --> TeamsIndex
+    NavItem --> TeamSwitcher
+    NavItem --> CreateTeamModal
+    NavItem --> SettingsPage
+    NavItem --> ProfilePage
+
+    %% Visual Elements
+    AppLogo[App Logo]
+    AppLogo --> Sidebar
+    AppLogo --> Header
+    AppLogo --> MainContent
+
+    %% Styling Components
+    AppLogo --> Brand[Branding]
+    AppLogo --> Accent[Accent Colors]
+    
+    %% Relationships
+    Dashboard -.-> TeamsCollection
+    TeamsIndex -.-> TeamsCollection
+    TeamSwitcher -.-> TeamsCollection
+    CreateTeamModal -.-> TeamsCollection
+    
+    %% Routing
+    Route[Application Routes]
+    Route --> Dashboard
+    Route --> TeamsIndex
+    Route --> TeamSwitcher
+    Route --> CreateTeamModal
+    Route --> SettingsPage
+    Route --> ProfilePage
+```
+
+## View Composition Structure
+
+### 1. Main Layout (`app.blade.php`)
+- Wraps entire application with `x-layouts::app`
+- Includes sidebar on the left
+- Contains header and main content area
+- Provides slot for dynamic page content
+
+### 2. Sidebar (`sidebar.blade.php`)
+- Left-hand navigation panel
+- Contains:
+  - **Team Switcher** - Primary navigation for team management
+  - **Platform Navigation** - Links to dashboard, repository, documentation
+  - **Footer Menu** - User menu with logout and profile options
+
+### 3. Authentication Layout (`auth.blade.php`)
+Three variants:
+- **Simple** - Minimal auth layout with logo and placeholder
+- **Card** - Card-style auth layout with title and content
+- **Split** - Two-column split layout with random quote and content
+
+### 4. Page Components
+- **Dashboard** - Shows user's teams and pending invitations
+- **Teams Index** - Lists all teams with creation/leave modals
+- **Team Switcher** - Interactive dropdown for changing teams
+- **Create Team Modal** - Form for creating new teams
+- **Settings Page** - User profile and account settings
+- **Profile Page** - User profile display
+
+### 5. Data Flow
+- All pages use `Auth::user()->toUserTeams()` for team data
+- `Auth::user()->currentTeam` for active team context
+- `Auth::user()->currentTeam?.name` for team identification
+- Livewire components handle real-time updates and state management
+
+## Component Dependencies
+
+```
+app.blade.php (Root Layout)
+├── sidebar.blade.php (Left Navigation)
+│   ├── team-switcher.blade.php (Primary nav)
+│   ├── platform-navigation.blade.php (Links)
+│   └── footer-menu.blade.php (User menu)
+├── header.blade.php (Top branding)
+└── main-content (Slot for dynamic pages)
+    ├── dashboard.blade.php
+    ├── teams/index.blade.php
+    ├── team-switcher.blade.php
+    ├── create-team-modal.blade.php
+    ├── settings.blade.php
+    └── profile.blade.php
+```
+
+## Key Design Patterns
+
+1. **Slot-Based Composition** - Dynamic content injected via `$slot`
+2. **Component Reusability** - Team switcher, modal, and header components used across pages
+3. **Hierarchical Layout** - Consistent sidebar + header + content pattern
+4. **Livewire Integration** - All interactive components use Livewire for state management
+5. **Authentication-Aware** - All team-related views respect user context
+
+This structure ensures modularity, maintainability, and clear separation of concerns across the application.

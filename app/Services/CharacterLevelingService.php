@@ -2,39 +2,60 @@
 
 namespace App\Services;
 
-use App\Models\Character;
 use App\Events\CharacterLeveledUp;
+use App\Models\Character;
+use App\Models\Levelling;
 use Illuminate\Support\Facades\Log;
 
 class CharacterLevelingService
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
+    public function levelUp(Character $character, int $area = 0): Character
     {
-        //
-    }
+        $healthPoints = DiceRoller::roll(1, 10);
+        $faithPoints = DiceRoller::roll(1, 6)
+            + max(0, $character->willpower - 10)
+            + max(0, $character->focus - 10);
+        $skillPoints = max(0, $character->intelligence - 10)
+            + max(0, $character->focus - 10)
+            + max(0, $character->willpower - 10)
+            + max(0, $character->perseverance - 10);
+        $communityPoints = DiceRoller::roll(2, 10)
+            + max(0, $character->socialization - 10);
 
-    public function levelUp(Character $character): Character
-    {
-        $newStats = $this->calculateNewStats($character);
+        $toLevel = Levelling::where('character_id', $character->id)
+            ->where('area', $area)
+            ->max('to_level') ?? 0;
+        $toLevel += 1;
 
-        // $character->update([
-        //     'level' => $character->level + 1,
-        //     'strength' => $newStats['strength'],
-        //     'agility' => $newStats['agility'],
-        //     // ...
-        // ]);
+        $levelling = Levelling::create([
+            'character_id' => $character->id,
+            'to_level' => $toLevel,
+            'area' => $area,
+            'health_points' => $healthPoints,
+            'faith_points' => $faithPoints,
+            'skill_points' => $skillPoints,
+            'community_points' => $communityPoints,
+            'leveled_up_at' => now(),
+        ]);
+
+        $character->increment('health_points', $healthPoints);
+        $character->increment('faith_points', $faithPoints);
+        $character->increment('skill_points', $skillPoints);
+        $character->increment('community_points', $communityPoints);
+        $character->refresh();
+
+        Log::debug('Character leveled up', [
+            'character_id' => $character->id,
+            'area' => $area,
+            'to_level' => $toLevel,
+            'health_points' => $healthPoints,
+            'faith_points' => $faithPoints,
+            'skill_points' => $skillPoints,
+            'community_points' => $communityPoints,
+        ]);
 
         event(new CharacterLeveledUp($character));
 
         return $character;
-    }
-
-    protected function calculateNewStats(Character $character): array
-    {
-        Log::debug("New stats calculated");
-        return [];
     }
 }

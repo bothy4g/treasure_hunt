@@ -15,8 +15,10 @@ return new class extends Migration
             $table->unsignedInteger('treasure_points')->default(0);
             $table->unsignedInteger('scripture_points')->default(0);
             $table->unsignedInteger('action_points')->default(0);
+            $table->unsignedInteger('faith_points')->default(0);
             $table->unsignedInteger('health_points')->default(0);
             $table->unsignedInteger('community_points')->default(0);
+            $table->unsignedInteger('skill_points')->default(0);
             $table->unsignedInteger('money')->default(0);
             $table->unsignedInteger('cultural_temptation_resistance')->default(0);
             $table->unsignedInteger('faith_temptation_resistance')->default(0);

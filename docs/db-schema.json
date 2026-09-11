@@ -119,49 +119,49 @@
                 "name": "strength",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "willpower",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "perserverance",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "intelligence",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "dexterity",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "socialization",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "focus",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "balance",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "0"
+                "default": "1"
             },
             {
                 "name": "generated_at",
@@ -188,6 +188,12 @@
                 "default": "0"
             },
             {
+                "name": "faith_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
                 "name": "health_points",
                 "type": "int unsigned",
                 "nullable": false,
@@ -195,6 +201,12 @@
             },
             {
                 "name": "community_points",
+                "type": "int unsigned",
+                "nullable": false,
+                "default": "0"
+            },
+            {
+                "name": "skill_points",
                 "type": "int unsigned",
                 "nullable": false,
                 "default": "0"
@@ -531,6 +543,12 @@
             },
             {
                 "name": "to_level",
+                "type": "smallint unsigned",
+                "nullable": false,
+                "default": null
+            },
+            {
+                "name": "area",
                 "type": "smallint unsigned",
                 "nullable": false,
                 "default": null

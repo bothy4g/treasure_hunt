@@ -1,5 +1,4 @@
 <?php # [BlazeFolded]:{flux::icon}:{/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/icon/index.blade.php}:{1787062569} ?>
-<?php # [BlazeFolded]:{flux::icon}:{/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/icon/index.blade.php}:{1787062569} ?>
 <?php # [BlazeFolded]:{flux::button}:{/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/button/index.blade.php}:{1787062569} ?>
 <?php # [BlazeFolded]:{flux::menu.heading}:{/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/menu/heading.blade.php}:{1787062569} ?>
 <?php # [BlazeFolded]:{flux::icon}:{/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/icon/index.blade.php}:{1787062569} ?>
@@ -28,23 +27,10 @@ use Livewire\Component;
 
         <?php echo ltrim(ob_get_clean()); ?>
             <span class="truncate font-semibold in-data-flux-sidebar-collapsed-desktop:hidden"><?php echo e($this->currentTeam()['name'] ?? __('Select team')); ?></span>
-            <?php ob_start(); ?><svg
-    class="shrink-0 [:where(&amp;)]:size-4 ms-auto size-4 in-data-flux-sidebar-collapsed-desktop:hidden"
-    data-flux-icon
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    aria-hidden="true"
-    data-slot="icon"
->
-    <path d="m7 15 5 5 5-5" />
-    <path d="m7 9 5-5 5 5" />
-</svg>
-<?php echo ltrim(ob_get_clean()); ?>
+            <?php $blaze_memoized_key = \Livewire\Blaze\Memoizer\Memo::key("flux::icon", ['name' => 'chevrons-up-down', 'variant' => 'micro', 'class' => 'ms-auto size-4 in-data-flux-sidebar-collapsed-desktop:hidden']); ?><?php if ($blaze_memoized_key !== null && \Livewire\Blaze\Memoizer\Memo::has($blaze_memoized_key)) : ?><?php echo \Livewire\Blaze\Memoizer\Memo::get($blaze_memoized_key); ?><?php else : ?><?php ob_start(); ?><?php if (!function_exists('_4e4d6afd7c6fbc3d5b206b4f5ac16211')) { $__blaze->compile('/var/www/html/vendor/livewire/flux/src/../stubs/resources/views/flux/icon/index.blade.php', $__blaze->compiledPath.'/4e4d6afd7c6fbc3d5b206b4f5ac16211.php'); require $__blaze->compiledPath.'/4e4d6afd7c6fbc3d5b206b4f5ac16211.php'; } ?>
+<?php $__blaze->pushData(['name' => 'chevrons-up-down','variant' => 'micro','class' => 'ms-auto size-4 in-data-flux-sidebar-collapsed-desktop:hidden']); ?>
+<?php _4e4d6afd7c6fbc3d5b206b4f5ac16211($__blaze, ['name' => 'chevrons-up-down','variant' => 'micro','class' => 'ms-auto size-4 in-data-flux-sidebar-collapsed-desktop:hidden'], [], [], [], $__this ?? (isset($this) ? $this : null)); ?>
+<?php $__blaze->popData(); ?><?php $blaze_memoized_html = ob_get_clean(); ?><?php if ($blaze_memoized_key !== null) { \Livewire\Blaze\Memoizer\Memo::put($blaze_memoized_key, $blaze_memoized_html); } ?><?php echo $blaze_memoized_html; ?><?php endif; ?>
         <?php echo trim(ob_get_clean()); ?>
 
     </button>

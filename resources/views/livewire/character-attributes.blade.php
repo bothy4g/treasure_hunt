@@ -2,7 +2,7 @@
     <div class="space-y-4">
         <div class="flex items-center justify-between">
             <span class="font-medium text-neutral-900 dark:text-neutral-100">
-                {{ __('Remaining points') }}: {{ $remainingPoints }} / 77
+                {{ __('Remaining points') }}: {{ $remainingPoints }} / {{ \App\Models\Character::MAX_DISTRIBUTABLE_POINTS }}
             </span>
         </div>
         

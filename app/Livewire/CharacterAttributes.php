@@ -7,11 +7,10 @@ use App\Models\Character;
 use App\Models\User;
 use Database\Factories\CharacterFactory;
 use Flux\Flux;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Illuminate\Support\Facades\Log;
 
 #[Title('Character Attributes')]
 class CharacterAttributes extends Component
@@ -27,7 +26,7 @@ class CharacterAttributes extends Component
 
     public int $willpower = 0;
 
-    public int $perserverance = 0;
+    public int $perseverance = 0;
 
     public int $intelligence = 0;
 
@@ -37,7 +36,7 @@ class CharacterAttributes extends Component
 
     public int $balance = 0;
 
-    public int $remainingPoints = 77;
+    public int $remainingPoints = Character::MAX_DISTRIBUTABLE_POINTS;
 
     public bool $attributesReadonly = false;
 
@@ -99,10 +98,10 @@ class CharacterAttributes extends Component
 
     protected function calculateRemainingPoints(): void
     {
-        $sum = $this->strength + $this->dexterity + $this->willpower + $this->perserverance
+        $sum = $this->strength + $this->dexterity + $this->willpower + $this->perseverance
             + $this->intelligence + $this->socialization + $this->focus + $this->balance;
 
-        $this->remainingPoints = max(0, 77 - $sum);
+        $this->remainingPoints = max(0, Character::MAX_DISTRIBUTABLE_POINTS - $sum);
     }
 
     /**
@@ -114,7 +113,7 @@ class CharacterAttributes extends Component
             'name' => 'New Character',
             'description' => '',
             'strength' => 1,
-            'perserverance' => 1,
+            'perseverance' => 1,
             'willpower' => 1,
             'intelligence' => 1,
             'dexterity' => 1,
@@ -128,7 +127,7 @@ class CharacterAttributes extends Component
     public function handleQuantityChange(string $name, int $value): void
     {
         // Calculate current sum of all attributes
-        $currentSum = $this->strength + $this->dexterity + $this->willpower + $this->perserverance
+        $currentSum = $this->strength + $this->dexterity + $this->willpower + $this->perseverance
             + $this->intelligence + $this->socialization + $this->focus + $this->balance;
         // dump($currentSum);
 
@@ -138,7 +137,7 @@ class CharacterAttributes extends Component
         $newSum = $currentSum - $attrCurrentValue + $value;
         // dd($newSum);
 
-        if ($newSum > 77) {
+        if ($newSum > Character::MAX_DISTRIBUTABLE_POINTS) {
             Flux::toast(variant: 'danger', text: __('You have reached the maximum distributable points'));
 
             return;
@@ -162,7 +161,7 @@ class CharacterAttributes extends Component
 
             // Recalculate remaining points after save
             $this->calculateRemainingPoints();
-            Log::debug("Character generated");
+            Log::debug('Character generated');
 
             CharacterGenerated::dispatch($this->character);
         }

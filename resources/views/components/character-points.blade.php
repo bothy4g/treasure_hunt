@@ -21,5 +21,13 @@
             <span class="text-sm text-neutral-600 dark:text-neutral-400">Community Points:</span>
             <p class="font-medium text-neutral-900 dark:text-neutral-100">{{ $character->community_points }}</p>
         </div>
+        <div>
+            <span class="text-sm text-neutral-600 dark:text-neutral-400">Skill Points:</span>
+            <p class="font-medium text-neutral-900 dark:text-neutral-100">{{ $character->skill_points }}</p>
+        </div>
+        <div>
+            <span class="text-sm text-neutral-600 dark:text-neutral-400">Faith Points:</span>
+            <p class="font-medium text-neutral-900 dark:text-neutral-100">{{ $character->faith_points }}</p>
+        </div>
     </div>
 </div>

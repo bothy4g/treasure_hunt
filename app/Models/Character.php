@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Character extends Model
 {
+    public const MAX_DISTRIBUTABLE_POINTS = 84;
+
     /** @use HasFactory<CharacterFactory> */
     use HasFactory;
 
@@ -17,20 +19,22 @@ class Character extends Model
         'name',
         'description',
         'strength',
-        'perserverance',
+        'perseverance',
         'willpower',
         'intelligence',
         'dexterity',
         'socialization',
         'focus',
         'balance',
+        'faith_points',
+        'skill_points',
         'generated_at',
     ];
 
     /** @var string[] */
     protected array $primaryAttributes = [
         'strength',
-        'perserverance',
+        'perseverance',
         'willpower',
         'intelligence',
         'dexterity',

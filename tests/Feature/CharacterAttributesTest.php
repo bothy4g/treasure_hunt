@@ -21,7 +21,7 @@ test('it calculates remaining points on mount', function () {
     $this->actingAs($user);
 
     Livewire::test(CharacterAttributes::class)
-        ->assertSet('remainingPoints', 77 - 40)
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 40)
         ->assertSet('strength', 5);
 });
 
@@ -41,9 +41,9 @@ test('it reduces remaining points when an attribute increases', function () {
     $this->actingAs($user);
 
     Livewire::test(CharacterAttributes::class)
-        ->assertSet('remainingPoints', 77 - 12)
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 12)
         ->call('handleQuantityChange', name: 'strength', value: 10)
-        ->assertSet('remainingPoints', 77 - 17)
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 17)
         ->assertSet('strength', 10);
 
     expect(Character::where('user_id', $user->id)->first()->strength)->toBe(10);
@@ -132,9 +132,9 @@ test('it increases remaining points when an attribute is decreased', function ()
     $this->actingAs($user);
 
     Livewire::test(CharacterAttributes::class)
-        ->assertSet('remainingPoints', 77 - 17)
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 17)
         ->call('handleQuantityChange', name: 'strength', value: 5)
-        ->assertSet('remainingPoints', 77 - 12)
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 12)
         ->assertSet('strength', 5);
 
     expect(Character::where('user_id', $user->id)->first()->strength)->toBe(5);
@@ -143,7 +143,7 @@ test('it increases remaining points when an attribute is decreased', function ()
 test('parent re-renders the remaining points counter as attributes are decreased', function () {
     $user = User::factory()->create();
 
-    // All attributes sum to exactly 77 so remaining points starts at 0.
+    // All attributes sum to exactly Character::MAX_DISTRIBUTABLE_POINTS so remaining points starts at 0.
     $attributeList = ['strength', 'perserverance', 'willpower', 'intelligence', 'dexterity', 'socialization', 'focus', 'balance'];
     $attributes = [];
     foreach ($attributeList as $attr) {
@@ -156,10 +156,10 @@ test('parent re-renders the remaining points counter as attributes are decreased
 
     Livewire::test(CharacterAttributes::class)
         ->assertSet('remainingPoints', 0)
-        ->assertSee('Remaining points: 0 / 77')
+        ->assertSee('Remaining points: 0 / Character::MAX_DISTRIBUTABLE_POINTS')
         ->call('handleQuantityChange', name: 'strength', value: 9)
-        ->assertSet('remainingPoints', 77 - 76)
-        ->assertSee('Remaining points: 1 / 77');
+        ->assertSet('remainingPoints', Character::MAX_DISTRIBUTABLE_POINTS - 76)
+        ->assertSee('Remaining points: 1 / Character::MAX_DISTRIBUTABLE_POINTS');
 });
 
 test('quantity input disables plus button when no remaining points', function () {

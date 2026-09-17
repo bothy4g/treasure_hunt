@@ -25,6 +25,7 @@ use Laravel\Fortify\PasskeyAuthenticatable;
  * @property Carbon|null $two_factor_confirmed_at
  * @property string|null $remember_token
  * @property int|null $current_team_id
+ * @property int|null $active_character_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Team|null $currentTeam
@@ -37,6 +38,19 @@ class User extends Authenticatable implements PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, HasTeams, Notifiable, PasskeyAuthenticatable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'current_team_id',
+        'active_character_id',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'two_factor_confirmed_at',
+        'email_verified_at',
+        'remember_token',
+    ];
 
     /**
      * Get the attributes that should be cast.

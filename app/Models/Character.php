@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Character extends Model
 {
-    public const MAX_DISTRIBUTABLE_POINTS = 84;
+    public const MAX_DISTRIBUTABLE_POINTS = 96;
 
     /** @use HasFactory<CharacterFactory> */
     use HasFactory;

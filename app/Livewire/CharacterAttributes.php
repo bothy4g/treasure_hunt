@@ -54,7 +54,9 @@ class CharacterAttributes extends Component
             return;
         }
 
-        $this->character = Character::where('user_id', $user->id)->first();
+        $this->character = Character::where('user_id', $user->id)
+            ->when($user->active_character_id, fn ($q) => $q->where('id', $user->active_character_id))
+            ->first();
 
         // Auto-create character if one does not exist
         if (! $this->character instanceof Character) {
@@ -164,6 +166,8 @@ class CharacterAttributes extends Component
             Log::debug('Character generated');
 
             CharacterGenerated::dispatch($this->character);
+
+            $this->dispatch('refresh-page');
         }
     }
 

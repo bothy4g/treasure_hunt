@@ -13,9 +13,15 @@ new #[Title('Character')] class extends Component {
         </h1>
 
         <?php
-        $character = auth()->user()->characters->first();
+        $character = auth()->user()->characters()->where('id', auth()->user()->active_character_id)->first()
+            ?? auth()->user()->characters()->first();
         $name = $character->name ?? 'Adventurer';
         ?>
+
+        <livewire:character-selector />
+
+        <div x-data x-on:refresh-page.window="window.location.reload()" class="hidden"></div>
+
         <livewire:character-name :initial-name="$name" :character="$character" />
 
         <div class="flex flex-row w-full gap-4">

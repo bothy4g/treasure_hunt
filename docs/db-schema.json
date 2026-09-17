@@ -119,49 +119,49 @@
                 "name": "strength",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "willpower",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
-                "name": "perserverance",
+                "name": "perseverance",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "intelligence",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "dexterity",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "socialization",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "focus",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "balance",
                 "type": "tinyint unsigned",
                 "nullable": false,
-                "default": "1"
+                "default": "0"
             },
             {
                 "name": "generated_at",
@@ -1138,6 +1138,12 @@
                 "default": null
             },
             {
+                "name": "active_character_id",
+                "type": "bigint unsigned",
+                "nullable": true,
+                "default": null
+            },
+            {
                 "name": "remember_token",
                 "type": "varchar(100)",
                 "nullable": true,
@@ -1159,6 +1165,15 @@
         "foreign_keys": [
             {
                 "columns": [
+                    "active_character_id"
+                ],
+                "foreign_table": "characters",
+                "foreign_columns": [
+                    "id"
+                ]
+            },
+            {
+                "columns": [
                     "current_team_id"
                 ],
                 "foreign_table": "teams",
@@ -1174,6 +1189,13 @@
                     "id"
                 ],
                 "unique": true
+            },
+            {
+                "name": "users_active_character_id_foreign",
+                "columns": [
+                    "active_character_id"
+                ],
+                "unique": false
             },
             {
                 "name": "users_current_team_id_foreign",

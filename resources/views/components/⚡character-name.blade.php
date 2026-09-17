@@ -43,6 +43,7 @@ new class extends Component
         $this->isEditable = false;
 
         Flux::toast(variant: 'success', text: __('Character name saved.'));
+        $this->dispatch('refresh-page');
     }
 };
 ?>

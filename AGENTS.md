@@ -1,11 +1,6 @@
 # Laravel Treasure Hunt — Agent Quickstart
 
-You are an expert in Laravel and Livewire development.
-- Always use the installed version's best practices (e.g., Livewire v3/v4 syntax).
-- Prefer single-file components where applicable.
-- Use `wire:stream` for real-time streaming features such as AI chat outputs.
-- Never mix up Alpine.js reactive states with Livewire server calls unnecessarily; use `x-on` and `@` bindings cleanly.
-- Verify database schemas and model relationships before writing database queries in components.
+You are an expert in Laravel and Livewire development. Always use the installed version's best practices — verify with `composer show` / `package.json` before assuming an API (see foundation rules below).
 
 ## Commands — always use Sail
 - `vendor/bin/sail artisan ...` — all Artisan commands
@@ -17,52 +12,20 @@ You are an expert in Laravel and Livewire development.
 - `composer ci:check` — run full CI check (lint + types + test)
 
 ## Skills activation
-- Skills live in `.agents/skills/`. Activate the relevant skill (blaze-optimize, fluxui-development, fortify-development, livewire-development, pest-testing, tailwindcss-development) before working in that domain.
-
-## PHP / Laravel
-- PHP 8.3+ / Laravel 13.x
-- Always use curly braces for control structures
-- Use TitleCase for Enum keys: `TeamPermission`, `TeamRole`
-- Prefer PHPDoc blocks over inline comments
-- Constructor property promotion is used; do not leave empty `__construct()` methods unless private
+Skills live in `.agents/skills/`. Activate the relevant skill before working in that domain — don't wait until you're stuck:
+- `livewire-development` — Livewire v3/v4 syntax, single-file components, `wire:stream`, Alpine.js boundaries
+- `fluxui-development` — Flux UI components, frontend/Vite conventions
+- `fortify-development` — Fortify auth, passkeys, rate limiting
+- `team-management` — team-based auth, membership, invitations
+- `pest-testing` — Pest conventions
+- `blaze-optimize`, `tailwindcss-development` — as needed
+- `engineering-discipline` — general coding-discipline guardrails (think-before-coding, simplicity, surgical changes, goal-driven execution). Applies to every non-trivial task in this repo regardless of domain.
 
 ## Database
 - Default: MySQL (`DB_CONNECTION=mysql` in `.env`)
 - Migrations in `database/migrations/`
 - Run migrations: `vendor/bin/sail artisan migrate --force`
-## Database Schema
-Full schema structure is available at `docs/db-schema.json`. 
-Consult this file for table names, columns, types, and foreign key relationships 
-before writing queries, migrations, or Eloquent models.
-
-## Authentication
-- Fortify with Passkeys support
-- Rate limiting: login 5/min, passkeys 10/min
-- Features controlled in `app/Providers/FortifyServiceProvider.php`
-- Fortify views: `pages::auth.*`
-
-## Teams
-- Team-based auth: routes prefixed with `{current_team}`
-- Membership in `team_members`, invitations in `team_invitations`
-- `User::current_team()` relationship available
-
-## Testing
-- Pest is the test framework
-- Use factories: `User::factory()->create()`
-- Tests in `tests/Feature/` and `tests/Unit/`
-- Run minimum tests: `vendor/bin/sail artisan test --compact`
-- Do NOT delete tests without approval
-
-## Frontend
-- Vite + Tailwind CSS 4
-- Components in `resources/views/components/`
-- Flux UI components used throughout
-- If UI changes don't reflect: run `vendor/bin/sail npm run build`
-
-## Code style
-- Descriptive variable/method names (e.g., `isRegisteredForDiscounts`)
-- Check for existing components before writing new ones
-- `/app/` follows PSR-4: `App\\` → `app/`
+- For schema, columns, types, and FK relationships, use Boost's `database-schema` MCP tool (see below) rather than a static file — it reflects the live database instead of drifting out of sync.
 
 <laravel-boost-guidelines>
 === foundation rules ===
@@ -246,66 +209,3 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Do NOT delete tests without approval.
 
 </laravel-boost-guidelines>
-
-# Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## 1. Think Before Coding
-
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
-
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
-
-## 2. Simplicity First
-
-**Minimum code that solves the problem. Nothing speculative.**
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
-===
-

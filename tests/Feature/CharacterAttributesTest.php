@@ -1,7 +1,7 @@
 <?php
 
 use App\Livewire\CharacterAttributes;
-use App\Models\Character;
+use App\Domains\Character\Models\Character;
 use App\Models\User;
 use Livewire\Livewire;
 

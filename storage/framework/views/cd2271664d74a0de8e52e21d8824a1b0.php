@@ -2,7 +2,7 @@
     <div class="space-y-4">
         <div class="flex items-center justify-between">
             <span class="font-medium text-neutral-900 dark:text-neutral-100">
-                <?php echo e(__('Remaining points')); ?>: <?php echo e($remainingPoints); ?> / <?php echo e(\App\Models\Character::MAX_DISTRIBUTABLE_POINTS); ?>
+                <?php echo e(__('Remaining points')); ?>: <?php echo e($remainingPoints); ?> / <?php echo e(\App\Domains\Character\Models\Character::MAX_DISTRIBUTABLE_POINTS); ?>
 
             </span>
         </div>

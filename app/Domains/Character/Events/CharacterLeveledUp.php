@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Events;
+namespace App\Domains\Character\Events;
 
+use App\Domains\Character\Models\Character;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Character;
 use Illuminate\Support\Facades\Log;
 
 class CharacterLeveledUp
@@ -21,7 +19,7 @@ class CharacterLeveledUp
      */
     public function __construct(public Character $character)
     {
-        Log::debug("Character levelled up event called");
+        Log::debug('Character levelled up event called');
     }
 
     /**

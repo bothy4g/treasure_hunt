@@ -146,7 +146,7 @@ if (! $overflow) {
         <?php if ($name): ?> data-modal="<?php echo e($name); ?>" <?php endif; ?>
         <?php if ($flyout): ?> data-flux-flyout <?php endif; ?>
         <?php if ($overflow): ?> data-flux-modal-overflow <?php endif; ?>
-        [STARTCOMPILEDUNBLAZE:KFlnxvIAPX]<?php \Livewire\Blaze\Unblaze::storeScope("KFlnxvIAPX", scope: ['name' => $name]) ?><?php \Livewire\Blaze\Unblaze::storeReplacement("KFlnxvIAPX", "CiAgICAgICAgeC1kYXRhPSJmbHV4TW9kYWwoQGpzKCRzY29wZVsnbmFtZSddKSwgQGpzKGlzc2V0KCRfX2xpdmV3aXJlKSA/ICRfX2xpdmV3aXJlLT5nZXRJZCgpIDogbnVsbCkpIgogICAgICAgIA==") ?>[ENDCOMPILEDUNBLAZE:KFlnxvIAPX]
+        [STARTCOMPILEDUNBLAZE:yGffVCXfpD]<?php \Livewire\Blaze\Unblaze::storeScope("yGffVCXfpD", scope: ['name' => $name]) ?><?php \Livewire\Blaze\Unblaze::storeReplacement("yGffVCXfpD", "CiAgICAgICAgeC1kYXRhPSJmbHV4TW9kYWwoQGpzKCRzY29wZVsnbmFtZSddKSwgQGpzKGlzc2V0KCRfX2xpdmV3aXJlKSA/ICRfX2xpdmV3aXJlLT5nZXRJZCgpIDogbnVsbCkpIgogICAgICAgIA==") ?>[ENDCOMPILEDUNBLAZE:yGffVCXfpD]
         x-on:modal-show.document="handleShow($event)"
         x-on:modal-close.document="handleClose($event)"
     >

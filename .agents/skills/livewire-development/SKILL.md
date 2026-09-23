@@ -147,6 +147,15 @@ These things changed in Livewire 4, but may not have been updated in this applic
 
 - `wire:transition` uses browser View Transitions API; `$errors` and `$intercept` magic properties available.
 - Non-blocking `wire:poll` and parallel `wire:model.live` updates improve performance.
+- Don't mix Alpine reactive state with Livewire server calls unnecessarily. Use `x-on` / `@` bindings for client-only interaction; anything that needs to persist or be authoritative belongs in Livewire's own state, not Alpine's.
+
+## Real-Time Streaming
+
+Use `wire:stream` for real-time streaming output, e.g. AI chat responses being rendered token-by-token.
+
+## Before Writing Queries in a Component
+
+Verify database schema and model relationships (via Boost's `database-schema` MCP tool) before writing database queries inside a component — don't assume column names or relationship shapes.
 
 For interceptors and hooks, see [reference/javascript-hooks.md](reference/javascript-hooks.md).
 

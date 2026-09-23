@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Domains\Character\Services;
 
-use App\Events\CharacterLeveledUp;
-use App\Models\Character;
-use App\Models\Levelling;
+use App\Domains\Character\Events\CharacterLeveledUp;
+use App\Domains\Character\Models\Character;
+use App\Domains\Character\Models\Levelling;
+use App\Services\DiceRoller;
 use Illuminate\Support\Facades\Log;
 
 class CharacterLevelingService

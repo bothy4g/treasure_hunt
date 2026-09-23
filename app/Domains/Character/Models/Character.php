@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Character\Models;
 
 use Database\Factories\CharacterFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Character extends Model

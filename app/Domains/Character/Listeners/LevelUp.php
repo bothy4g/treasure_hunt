@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Domains\Character\Listeners;
 
-use App\Events\CharacterGenerated;
-use App\Events\CharacterLeveledUp;
-use App\Services\CharacterLevelingService;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Domains\Character\Events\CharacterGenerated;
+use App\Domains\Character\Events\CharacterLeveledUp;
+use App\Domains\Character\Services\CharacterLevelingService;
 use Illuminate\Support\Facades\Log;
 
 class LevelUp
@@ -16,7 +14,7 @@ class LevelUp
      */
     public function __construct(
         protected CharacterLevelingService $service
-    ){}
+    ) {}
 
     /**
      * Handle the event.
@@ -24,9 +22,9 @@ class LevelUp
     public function handle(CharacterGenerated $event): void
     {
         $character = $event->getCharacter();
-        Log::debug("Leveling up character");
+        Log::debug('Leveling up character');
         $this->service->levelUp($character);
-        Log::debug("Leveled up character");
+        Log::debug('Leveled up character');
         CharacterLeveledUp::dispatch($character);
     }
 }

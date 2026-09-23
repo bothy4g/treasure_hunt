@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Events\CharacterGenerated;
-use App\Models\Character;
+use App\Domains\Character\Events\CharacterGenerated;
+use App\Domains\Character\Models\Character;
 use App\Models\User;
 use Database\Factories\CharacterFactory;
 use Flux\Flux;

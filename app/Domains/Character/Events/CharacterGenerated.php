@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Events;
+namespace App\Domains\Character\Events;
 
+use App\Domains\Character\Models\Character;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Character;
 
 class CharacterGenerated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
 
     private Character $character;
 
@@ -38,7 +35,8 @@ class CharacterGenerated
         ];
     }
 
-    public function getCharacter() : Character{
+    public function getCharacter(): Character
+    {
         return $this->character;
     }
 }

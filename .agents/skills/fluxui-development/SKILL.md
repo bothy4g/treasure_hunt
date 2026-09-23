@@ -67,6 +67,10 @@ vendor/bin/sail artisan flux:icon crown grip-vertical github
 </flux:modal>
 ```
 
+## Build
+
+This project uses Vite + Tailwind CSS 4 via Sail. If a UI change isn't showing up, it's almost always a stale build, not a code problem — run `vendor/bin/sail npm run build` (or `npm run dev` for a watcher) before debugging further.
+
 ## Verification
 
 1. Check component renders correctly

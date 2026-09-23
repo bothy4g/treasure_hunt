@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Character;
+use App\Domains\Character\Models\Character;
 use App\Models\User;
 
 test('it allows the user to update the character name from the main page', function () {

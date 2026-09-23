@@ -125,6 +125,12 @@ Modify `app/Actions/Fortify/CreateNewUser.php` to customize user creation logic,
 
 Configure via `fortify.limiters.login` in config. Default configuration throttles by username + IP combination.
 
+## This Project's Configuration
+
+- Passkeys feature is enabled (`Features::passkeys()`).
+- Rate limits are set to: login 5/min, passkeys 10/min — check these before changing throttle behavior, don't silently loosen them.
+- View callbacks are namespaced under `pages::auth.*` in `FortifyServiceProvider` rather than the framework default — use that namespace when adding or editing auth views.
+
 ## Key Endpoints
 
 | Feature                | Method   | Endpoint                                    |

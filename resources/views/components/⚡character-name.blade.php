@@ -10,7 +10,7 @@ new class extends Component
 
     public bool $isEditable = false;
 
-    public ?\App\Models\Character $character = null;
+    public ?\App\Domains\Character\Models\Character $character = null;
 
     public function mount(string $initialName): void
     {
